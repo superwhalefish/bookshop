@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookshop.com.yy.dao.BookMapper">
+	<resultMap id="BookMap" type="Book">
+		<id property="id" column="id" />
+		<result property="bname" column="bname" />
+		<result property="bprice" column="bprice" />
+		<result property="bnum" column="bnum" />
+		<result property="sstate" column="sstate" />
+		<result property="bmig" column="bmig" />
+		<result property="bcommentid" column="bcommentid" />
+		<result property="bookcateid" column="bookcateid" />
+		<result property="bdetials" column="bdetials" />
+		<result property="bauthor" column="bauthor" />
+		<result property="bshop" column="bshop" />
+		<result property="putawaytime" column="putawaytime" />
+		<result property="bookCate.id" column="id" />
+		<result property="bookCate.bcname" column="bcname" />
+	</resultMap>
+	<select id="selectByNameOrBcname" parameterType="Fenye"
+		resultMap="BookMap">
+		SELECT
+		b.id,b.bname,b.bauthor,b.bcommentid,b.bdetials,b.bimg,b.bookcateid,b.bprice,b.bshop,b.bnum,b.putawaytime,b.sstate,bc.bcname
+		FROM `book` b,bookcate bc
+		<where>
+			b.bookcateid=bc.id
+			<if test="bname != null and bname != '' ">
+				AND b.bname LIKE "%"#{bname}"%"
+			</if>
+			<if test="bookcateid !=null  and bookcateid > 0 ">
+				and b.bookcateid =#{bookcateid}
+			</if>
+		</where>
+		limit #{page},#{pageSize}
+	</select>
+
+	<select id="selectTotalByNameOrBcname" parameterType="Fenye"
+		resultType="_int">
+		SELECT
+		count(b.id) FROM `book` b,bookcate bc
+		<where>
+			b.bookcateid=bc.id
+			<if test="bname != null and bname != '' ">
+				AND b.bname LIKE "%"#{bname}"%"
+			</if>
+			<if test="bookcateid !=null  and bookcateid > 0 ">
+				and b.bookcateid =#{bookcateid}
+			</if>
+		</where>
+	</select>
+
+	<!-- 更新书本信息 -->
+	<update id="updateBook" parameterType="Book">
+		update book
+		<set>
+			<if test=" bname !=null and bname !=''">
+				bname = #{bname},
+			</if>
+			<if test="bprice !=null and bprice !=''">
+				bprice = #{bprice},
+			</if>
+			<if test="bnum>0">
+				bnum = #{bnum},
+			</if>
+			<if test="sstate !=null and sstate!=''">
+				sstate = #{sstate},
+			</if>
+			<if test="bookcateid !=null and bookcateid!=''">
+				bookcateid = #{bookcateid},
+			</if>
+			<if test="bdetials!=null and bdetials !='' ">
+				bdetials = #{bdetials},
+			</if>
+			<if test="bauthor!=null and bauthor !=''">
+				bauthor = #{bauthor},
+			</if>
+			<if test=" bshop!=null and bshop !='' ">
+				bshop = #{bshop},
+			</if>
+			<if test="putawaytime!=null and putawaytime!=''">
+				putawaytime = #{putawaytime}
+			</if>
+		</set>
+		<where>
+			id=#{id}
+		</where>
+	</update>
+	<!-- 添加 -->
+	<insert id="addBook" parameterType="Book">
+		INSERT INTO book
+		(bname,bprice,bnum,sstate, bimg,bcommentid,bookcateid,bdetials,bauthor,bshop ,putawaytime)
+		VALUES(#{bname},#{bprice},#{bnum},#{sstate}, #{bimg},#{bcommentid},#{bookcateid},#{bdetials},#{bauthor},#{bshop},#{putawaytime} )
+	</insert>
+	<!-- 刪除 -->
+	<delete id="del" parameterType="_int">
+	delete from book where id=#{id}
+	</delete>
+</mapper>

@@ -1,0 +1,14 @@
+server:
+  port: 2345
+  servlet:    context-path: /bookshop
+spring:  datasource:    url: jdbc:mysql://localhost:3306/bookshop?characterEncoding=utf-8
+    username: root
+    password: admin
+    driver-class-name: com.mysql.jdbc.Driver  mvc:    view:      prefix: /WEB-INF/view/ 
+      suffix: .jsp
+mybatis:  type-aliases-package: bookshop.com.yy.entity
+  mapper-locations:  - classpath:mapper/*.xml
+logging:  level:    bookshop: 
+     com: 
+      yy: 
+       dao: debug

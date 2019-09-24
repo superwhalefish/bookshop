@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="bookshop.com.yy.dao.BookCateMapper">
+  <!-- 查询所有商品种类 -->
+  <select id="selectBookCateAll" resultType="BookCate">
+  select id,bcname from bookcate
+  </select>
+  </mapper>

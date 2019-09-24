@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="bookshop.com.yy.dao.BookCateMapper">
+	<!-- 查询所有商品种类 -->
+	<select id="selectBookCateAll" resultType="BookCate">
+		select id,bcname from
+		bookcate
+	</select>
+	<!-- 根据名称查询 -->
+	<select id="selectBookCateByBcname" resultType="BookCate"
+		parameterType="fenye">
+		SELECT id,bcname FROM `bookcate`
+		<where>
+			<if test="bcname !=null and bcname !=''">
+				and bcname like "%"#{bcname}"%"
+			</if>
+		</where>
+		limit #{page},#{pageSize}
+	</select>
+	<!-- 根据名称查询总条数 -->
+	<select id="selectBookCateByBcnameTotal" parameterType="fenye"
+		resultType="_int">
+		SELECT count(id) FROM `bookcate`
+		<where>
+			<if test="bcname !=null and bcname !=''">
+				and bcname like "%"#{bcname}"%"
+			</if>
+		</where>
+	</select>
+
+	<!-- 跟新类别信息 -->
+	<update id="updateBookCate" parameterType="BookCate">
+		update bookcate
+		<set>
+			<if test="bcname !=null and bcname !=''">
+				bcname=#{bcname},
+			</if>
+		</set>
+		<where>
+			<if test="id !=null and id !=''">
+				id =#{id}
+			</if>
+		</where>
+	</update>
+	<!-- 添加类别 -->
+	<insert id="addBookCate" parameterType="BookCate">
+		insert into bookcate (bcname) values(#{bcname})
+	</insert>
+	<!-- 删除信息 -->
+	<delete id="delBookCate" parameterType="_int">
+		delete from bookcate where id=#{id}
+	</delete>
+</mapper>
