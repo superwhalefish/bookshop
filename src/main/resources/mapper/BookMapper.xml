@@ -36,8 +36,8 @@
 		limit #{page},#{pageSize}
 	</select>
 	<!-- 根据id查询书本详情 -->
-<select id="selectById" parameterType="int" resultMap="BookMap">
-	SELECT
+	<select id="selectById" parameterType="int" resultMap="BookMap">
+		SELECT
 		b.id,b.bname,b.bauthor,b.bcommentid,b.bdetials,b.bimg,b.bookcateid,b.bprice,b.bshop,b.bnum,b.putawaytime,b.sstate,bc.bcname
 		FROM `book` b,bookcate bc
 		<where>
@@ -47,7 +47,7 @@
 			</if>
 		</where>
 
-</select>
+	</select>
 	<select id="selectTotalByNameOrBcname" parameterType="Fenye"
 		resultType="_int">
 		SELECT
@@ -116,11 +116,44 @@
 	<select id="selectRandTwoBook" resultMap="BookMap">
 		SELECT
 		b.id,b.bname,bc.bcname,b.bprice,b.bnum,b.sstate,b.bimg,b.bcommentid,b.bdetials,b.bauthor,b.bshop,b.putawaytime
-		FROM `book` b,bookcate bc 
+		FROM `book` b,bookcate bc
 		<where>
-		 b.bookcateid=bc.id
+			b.bookcateid=bc.id
 		</where>
-		 ORDER BY RAND()
+		ORDER BY RAND()
 		LIMIT 6
 	</select>
+
+	<!--根据书本id查询相关书籍 -->
+	<select id="selectBcNameByBookId" parameterType="int"
+		resultType="Book">
+		SELECT
+		b.id,
+		b.bname,
+		b.bprice,
+		b.bnum,
+		b.sstate,
+		b.bimg,
+		b.bcommentid,
+		b.bdetials,
+		b.bauthor,
+		b.bshop,
+		b.putawaytime
+		FROM
+		book b
+		<where>
+			b.bookcateid = (
+			SELECT
+			bookcateid
+			FROM
+			`book`
+			<where>
+				id = #{id}
+			</where>
+			)
+		</where>
+		ORDER BY RAND()
+		LIMIT 6
+	</select>
+
 </mapper>

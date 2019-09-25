@@ -117,4 +117,10 @@ public class BookServiceBookService implements BookService {
 		return bookMapper.selectById(id);
 	}
 
+	@Override
+	public List<Book> selectBcNameByBookId(Integer id) {
+		// TODO Auto-generated method stub
+		return bookMapper.selectBcNameByBookId(id);
+	}
+
 }

@@ -31,7 +31,7 @@
       <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>C++ Primer中文版</div>
       <div class="feat_prod_box_details">
       
-      <c:forEach items="${bookinfo }" var="b">
+      <c:forEach items="${bookinfo }" var="r">
         <div class="prod_img"><a href="details.jsp"><img width="100" height="150" src="img/9213579.jpg" alt="" title="" border="0" /></a> <br />
           <br />
           <a href="img/9213579.jpg" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0" /></a> </div>
@@ -74,15 +74,11 @@
            
           </div>
           <div style="display: none;" class="tab" id="tab2">
-            <div class="new_prod_box"> <a href="details.jsp">C++ Primer 习题解答</a>
-              <div class="new_prod_bg"> <a href="details.jsp"><img width="60" height="90"  src="img/8996733.jpg" alt="" title="" class="thumb" border="0" /></a> </div>
+          <c:forEach items="${aboutBook }" var="about">
+            <div class="new_prod_box"> <a href="/bookshop/bookDetails?id=${about.id }">${about.bname }</a>
+              <div class="new_prod_bg"> <a href="details.jsp"><img width="60" height="90"  src="img/${about.bimg }.jpg" alt="" title="" class="thumb" border="0" /></a> </div>
             </div>
-            <div class="new_prod_box"> <a href="details.jsp">C程序设计语言</a>
-              <div class="new_prod_bg"> <a href="details.jsp"><img width="60" height="90"  src="img/9150365.jpg" alt="" title="" class="thumb" border="0" /></a> </div>
-            </div>
-            <div class="new_prod_box"> <a href="details.jsp">C#设计模式</a>
-              <div class="new_prod_bg"> <a href="details.jsp"><img width="60" height="90"  src="img/9011122.jpg" alt="" title="" class="thumb" border="0" /></a> </div>
-            </div>
+            </c:forEach>
            
             <div class="clear"></div>
           </div>

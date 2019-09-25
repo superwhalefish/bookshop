@@ -50,4 +50,10 @@ List<Book> selectRandTwoBook();
  * @return
  */
 List<Book> selectById(@Param("id")Integer id);
+/**
+ * 根据书本id查询相关书籍
+ * @param id
+ * @return
+ */
+List<Book> selectBcNameByBookId(Integer id);
 }

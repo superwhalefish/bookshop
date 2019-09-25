@@ -23,8 +23,12 @@ public class DetailsController {
 	
 	@GetMapping("/bookDetails")
 	public String details(HttpServletRequest request,int id) {
+		//书本详情
 		List<Book> bookInfo = bookService.selectById(id);
 		request.setAttribute("bookinfo",bookInfo);
+		//相关书籍
+		List<Book> bookAboutId = bookService.selectBcNameByBookId(id);
+		request.setAttribute("aboutBook", bookAboutId);
 		return "details";
 	}
 	
