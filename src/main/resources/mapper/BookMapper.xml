@@ -35,7 +35,19 @@
 		</where>
 		limit #{page},#{pageSize}
 	</select>
+	<!-- 根据id查询书本详情 -->
+<select id="selectById" parameterType="int" resultMap="BookMap">
+	SELECT
+		b.id,b.bname,b.bauthor,b.bcommentid,b.bdetials,b.bimg,b.bookcateid,b.bprice,b.bshop,b.bnum,b.putawaytime,b.sstate,bc.bcname
+		FROM `book` b,bookcate bc
+		<where>
+			b.bookcateid=bc.id
+			<if test="id != null and id != '' ">
+				AND b.id =#{id}
+			</if>
+		</where>
 
+</select>
 	<select id="selectTotalByNameOrBcname" parameterType="Fenye"
 		resultType="_int">
 		SELECT

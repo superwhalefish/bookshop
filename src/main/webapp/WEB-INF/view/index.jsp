@@ -7,6 +7,8 @@
 <meta charset="utf-8">
 <title>书城主页</title>
 <link rel="stylesheet" type="text/css" href="css/style.css" />
+<script type="text/javascript" src="js/jquery-easyui-1.4.3/jquery.min.js"></script>
+
 </head>
 <body>
 	<div id="wrap">
@@ -31,7 +33,7 @@
 				<c:forEach items="${randTwoBook }" var="rBook" begin="0" end="1">
 					<div class="feat_prod_box">
 						<div class="prod_img">
-							<a href="details.jsp"><img src="img/${rBook.bimg }.jpg"
+							<a href="/bookshop/bookDetails?id=${rBook.id }"><img src="img/${rBook.bimg }.jpg"
 								width="100" height="150" alt="" title="" border="0" /></a>
 						</div>
 						<div class="prod_det_box">
@@ -40,7 +42,7 @@
 								<div class="prod_title">${rBook.bname }</div>
 								<p class="details">${rBook.bdetials }著，${rBook.bauthor } 等译
 								</p>
-								<a href="details.jsp" class="more">- 更多细节 -</a>
+								<a href="/bookshop/bookDetails?id=${rBook.id }" class="more">- 更多细节 -</a>
 								<div class="clear"></div>
 							</div>
 							<div class="box_bottom"></div>
@@ -58,7 +60,7 @@
 							<a href="details.jsp">${rBook.bname }</a>
 							<div class="new_prod_bg">
 								<span class="new_icon"><img src="images/new_icon.gif"
-									alt="" title="" /></span> <a href="details.jsp"><img width="60"
+									alt="" title="" /></span> <a href="/bookshop/bookDetails?id=${rBook.id }"><img width="60"
 									height="90" src="img/${rBook.bimg }.jpg" alt="" title=""
 									class="thumb" border="0" /></a>
 							</div>

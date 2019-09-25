@@ -2,6 +2,8 @@ package bookshop.com.yy.service;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
+
 import bookshop.com.yy.entity.Book;
 import bookshop.com.yy.entity.Fenye;
 
@@ -41,4 +43,11 @@ Integer del(Integer id);
  * @return
  */
 List<Book> selectRandTwoBook();
+
+/**
+ * 根据id查出书本的详情
+ * @param id
+ * @return
+ */
+List<Book> selectById(@Param("id")Integer id);
 }

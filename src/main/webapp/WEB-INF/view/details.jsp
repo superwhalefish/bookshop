@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,6 +30,8 @@
       <div class="crumb_nav"> <a href="index.jsp">首页</a> &gt;&gt; 详情</div>
       <div class="title"><span class="title_icon"><img src="images/bullet1.gif" alt="" title="" /></span>C++ Primer中文版</div>
       <div class="feat_prod_box_details">
+      
+      <c:forEach items="${bookinfo }" var="b">
         <div class="prod_img"><a href="details.jsp"><img width="100" height="150" src="img/9213579.jpg" alt="" title="" border="0" /></a> <br />
           <br />
           <a href="img/9213579.jpg" rel="lightbox"><img src="images/zoom.gif" alt="" title="" border="0" /></a> </div>
@@ -37,19 +39,22 @@
           <div class="box_top"></div>
           <div class="box_center">
             <div class="prod_title">详情</div>
-            <p class="details"> 一本经久不衰的C 畅销经典教程；首本支持C 11新标准的程序设计图书。       它被誉为“发人员学习C 的必备教程,C 是在 C 语言基础上发的一种集面向对象编程、泛型编程和过程化编程于一体的编程语言，是C语言的...&nbsp;</p>
-            <div class="price"><strong>作者:</strong> <span class="red">（美）Stanley B. Lippman Barbara E. Moo Josée LaJoie   著，李师贤  等译</span></div>
-			 <div class="price"><strong>出版社:</strong> <span class="red">人民邮电出版社</span></div>
-			  <div class="price"><strong>出版时间:</strong> <span class="red">2010-02-01</span></div>
-			   <div class="price"><strong>字&nbsp;&nbsp;数:</strong> <span class="red">18.2万</span></div>
-			    <div class="price"><strong>所属分类:</strong> <span class="red">教育 > 科技 </span></div>
-            <div class="price"><strong>价格:</strong> <span class="red">100元</span></div>
+            <p class="details"> ${b.bdetials }&nbsp;</p>
+            <div class="price"><strong>作者:</strong> <span class="red">${r.bauthor }   著，羽翼  等译</span></div>
+			 <div class="price"><strong>出版社:</strong> <span class="red">${r.bshop }</span></div>
+			  <div class="price"><strong>出版时间:</strong> <span class="red">${r.putawaytime }</span></div>
+			   <div class="price"><strong>字&nbsp;&nbsp;数:</strong> <span class="red">${r.bnum}万</span></div>
+			    <div class="price"><strong>所属分类:</strong> <span class="red">${r.bookCate.bcname } </span></div>
+            <div class="price"><strong>价格:</strong> <span class="red">${r.bprice }元</span></div>
             <a href="details.jsp" class="more">加入购物车</a>
             <div class="clear"></div>
           </div>
           <div class="box_bottom"></div>
         </div>
         <div class="clear"></div>
+        
+        </c:forEach>
+        
       </div>
       <div id="demo" class="demolayout">
         <ul id="demo-nav" class="demolayout">

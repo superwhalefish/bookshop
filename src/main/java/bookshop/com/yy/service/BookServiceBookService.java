@@ -111,4 +111,10 @@ public class BookServiceBookService implements BookService {
 		return bookMapper.selectRandTwoBook();
 	}
 
+	@Override
+	public List<Book> selectById(Integer id) {
+		// TODO Auto-generated method stub
+		return bookMapper.selectById(id);
+	}
+
 }
