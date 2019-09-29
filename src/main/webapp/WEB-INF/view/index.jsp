@@ -14,13 +14,13 @@
 	<div id="wrap">
 		<div class="header">
 			<div class="logo">
-				<a href="index.jsp"><img src="images/logo.gif" alt="" title=""
+				<a href="/bookshop/index"><img src="images/logo.gif" alt="" title=""
 					border="0" /></a>
 			</div>
 			<div id="menu">
 				<ul>
-					<li class="selected"><a href="index.jsp">首页</a></li>
-					<li><a href="category.jsp">图书</a></li>
+					<li class="selected"><a href="/bookshop/index">首页</a></li>
+					<li><a href="/bookshop/category">图书</a></li>
 				</ul>
 			</div>
 		</div>
@@ -57,7 +57,7 @@
 				<div class="new_products">
 					<c:forEach items="${randTwoBook }" var="rBook">
 						<div class="new_prod_box">
-							<a href="details.jsp">${rBook.bname }</a>
+							<a href="/bookshop/bookDetails?id=${rBook.id }">${rBook.bname }</a>
 							<div class="new_prod_bg">
 								<span class="new_icon"><img src="images/new_icon.gif"
 									alt="" title="" /></span> <a href="/bookshop/bookDetails?id=${rBook.id }"><img width="60"

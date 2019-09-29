@@ -19,7 +19,7 @@
     <div class="logo"><a href="index.jsp"><img src="images/logo.gif" alt="" title="" border="0" /></a></div>
     <div id="menu">
       <ul>
-        <li class="selected"><a href="index.jsp">首页</a></li>
+        <li class="selected"><a href="/bookshop/index">首页</a></li>
         <li><a href="specials.jsp">图书</a></li>
 		 <li><a href="cart.jsp">购物车</a></li>
       </ul>
