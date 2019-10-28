@@ -1,6 +1,7 @@
 package bookshop.com.yy.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -14,6 +15,7 @@ import lombok.Data;
 @Table(name="bookcate")
 public class BookCate {
 	@Id
+	@GeneratedValue
 	private Integer id;
 	private String bcname;
 }
