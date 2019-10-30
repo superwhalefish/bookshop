@@ -20,7 +20,7 @@
 		var pwd = $("#userpsw").val();
 		var flag = $("#frm").form("validate");
 		if (flag) {
-				login(name, pwd);
+			login(name, pwd);
 		} else {
 			$.messager.alert("提示", "输入内容为空");
 		}
@@ -31,14 +31,19 @@
 			un : name,
 			pwd : pwd
 		}, function(res) {
-			if (res == 0) {
-				$.messager.alert("提示", "该用户不存在");
-			} else if (res == 1) {
+			if (res == 1) {
+				$.messager.alert("提示", "请输入账号");
+			} else if (res == 2) {
 				$.messager.alert("提示", "登陆成功");
+				window.location.href="/bookshop/goCart"
 			} else if (res == 3) {
-				$.messager.alert("提示", "该用户已在异地登陆");
-			} else {
 				$.messager.alert("提示", "密码错误");
+			} else if (res == 4) {
+				$.messager.alert("提示", "此账号被登录");
+			} else if (res == 5) {
+				$.messager.alert("提示", "账号已被锁定，请申诉");
+			} else if (res == 6) {
+				$.messager.alert("提示", "此账号不存在");
 			}
 
 		}, "json")
@@ -48,8 +53,7 @@
 <body>
 	<div
 		style="margin-top: 180px; margin-left: 600px; width: 400px; height: 400px;">
-		<div  class="easyui-panel"
-			title="用户登录页面" id="uwin">
+		<div class="easyui-panel" title="用户登录页面" id="uwin">
 			<div style="padding: 20px; margin-left: 20px;">
 				<form id="frm">
 					<table cellpadding="5">
@@ -73,7 +77,7 @@
 						data-options="iconCls:'icon-clear'" onclick="clearForm()">取消</a>
 				</div>
 			</div>
-		<!-- 	<div>
+			<!-- 	<div>
 				<label for=""><input type="checkbox" id="check">7天免登陆</label>
 			</div> -->
 		</div>

@@ -17,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -33,7 +35,8 @@ public class OrderServiceImp implements OrderService {
 	public Map<String, Object> getOrd(Integer page, Integer rows, String orderid, String startOrdertime,
 			String endOrdertime, String signaturestatus, String deliverystatus) {
 		// TODO Auto-generated method stub
-		Pageable pageRequest = PageRequest.of((page - 1)*rows, rows);
+		Sort sort = new Sort(Direction.DESC,"ordid");
+		Pageable pageRequest = PageRequest.of((page - 1)*rows, rows, sort);
 		Page<Order> findAll = orderRepository
 				.findAll(get(orderid, startOrdertime, endOrdertime, signaturestatus, deliverystatus), pageRequest);
 		Map<String, Object> map = new HashMap<String, Object>();
