@@ -89,7 +89,9 @@ public class CartController {
 	}
 
 	@GetMapping("/goCart")
-	public String car() {
+	public String car(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		String name = (String) session.getAttribute("username");
 		return "cart";
 	}
 }

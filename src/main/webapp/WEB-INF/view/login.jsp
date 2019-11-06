@@ -55,7 +55,7 @@
 		style="margin-top: 180px; margin-left: 600px; width: 400px; height: 400px;">
 		<div class="easyui-panel" title="用户登录页面" id="uwin">
 			<div style="padding: 20px; margin-left: 20px;">
-				<form id="frm">
+				<form id="frm" >
 					<table cellpadding="5">
 						<tr>
 							<td>用户名：</td>
